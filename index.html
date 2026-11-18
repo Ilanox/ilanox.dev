@@ -75,13 +75,17 @@ nav a:hover{color:var(--ink)}
   transition:background-color .6s,box-shadow .6s,filter .6s;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both .1s}
 /* drawn sun and moon, labelled with what a tap does */
 .sun{display:grid;place-items:center;
-  background:radial-gradient(circle at 34% 30%,#FFF4CF 0,#F6DE97 32%,#EDC46E 72%,#D9A651 100%);
-  box-shadow:inset -14px -18px 30px rgba(166,110,30,.28),inset 10px 12px 24px rgba(255,255,255,.45),0 0 0 16px var(--glow1),0 0 0 36px var(--glow2)}
+  background:radial-gradient(circle at 38% 34%,#F8E3A8 0,#F1D38A 55%,#E8C273 100%);
+  box-shadow:0 0 60px 18px rgba(241,211,138,.45),0 0 140px 40px rgba(241,211,138,.22)}
 html.night .sun{
-  background:radial-gradient(circle at 30% 62%,rgba(120,136,152,.35) 0 9%,transparent 10%),radial-gradient(circle at 66% 30%,rgba(120,136,152,.3) 0 6%,transparent 7%),radial-gradient(circle at 70% 70%,rgba(120,136,152,.25) 0 5%,transparent 6%),radial-gradient(circle at 36% 30%,#F7F9FB 0,#DCE3EA 40%,#B9C5D0 80%,#9DABB8 100%);
-  box-shadow:inset -16px -18px 30px rgba(40,56,74,.35),inset 10px 12px 22px rgba(255,255,255,.4),0 0 0 16px var(--glow1),0 0 0 36px var(--glow2)}
-.sun-t{font-weight:700;font-size:clamp(14px,1.6vw,19px);letter-spacing:.01em;color:#8A5D16;text-shadow:0 1px 0 rgba(255,246,214,.7);transition:color .6s}
-html.night .sun-t{color:#3E4E5E;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+  background:
+    radial-gradient(circle at 34% 60%,rgba(150,164,178,.28) 0 7%,transparent 7.5%),
+    radial-gradient(circle at 62% 34%,rgba(150,164,178,.22) 0 4.5%,transparent 5%),
+    radial-gradient(circle at 66% 66%,rgba(150,164,178,.2) 0 3.5%,transparent 4%),
+    radial-gradient(circle at 40% 36%,#EEF2F5 0,#DCE3E9 60%,#CAD3DB 100%);
+  box-shadow:0 0 60px 14px rgba(200,216,232,.18),0 0 140px 40px rgba(200,216,232,.08)}
+.sun-t{font-weight:500;font-size:clamp(13px,1.25vw,16px);letter-spacing:.03em;color:rgba(122,84,24,.72);transition:color .6s}
+html.night .sun-t{color:rgba(52,68,84,.62)}
 .sun-t .n,html.night .sun-t .d{display:none}
 html.night .sun-t .n{display:inline}
 .sunbtn{background:none;border:0;padding:0;border-radius:50%;cursor:pointer;display:block}
@@ -152,8 +156,8 @@ footer .end{display:flex;align-items:center;gap:18px}
   .sky{padding-bottom:90px}
   .hero{grid-template-columns:1fr;gap:28px;padding:28px 0 20px}
   .sunbox{order:-1;justify-items:start}
-  .sun{width:116px}
-  .sun-t{font-size:13px}
+  .sun{width:112px}
+  .sun-t{font-size:12px}
   .hills{height:90px}
   .c1{top:70px;width:110px}.c2{top:180px}
   section{padding:52px 0}
