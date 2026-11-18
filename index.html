@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ilan Levy (Ilanox)</title>
 <meta name="description" content="Ilan Levy (Ilanox): electronics practical engineer working in RF and EMC, founder of Edvin Studios and owner of the Israeli Clique.">
-<meta name="theme-color" content="#D5E5EF">
+<meta name="theme-color" content="#CFE2EE">
 <link rel="canonical" href="https://ilanox.dev/">
 <link rel="icon" href="https://gravatar.com/avatar/33474f884d2026d684a7075970bd6f6264a6c5bd1fa098f1b5466cfbea188ca3?s=64&d=initials&name=Ilan+Levy">
 <link rel="apple-touch-icon" href="https://gravatar.com/avatar/33474f884d2026d684a7075970bd6f6264a6c5bd1fa098f1b5466cfbea188ca3?s=180&d=initials&name=Ilan+Levy">
@@ -27,8 +27,17 @@
   --sky:#CFE2EE; --sky2:#EAF2F7; --ground:#E4EDDF; --paper:#F4F7F2; --card:#FFFFFF;
   --ink:#1A2630; --ink2:#44525C; --ink3:#73828B; --rule:#D5DFD6;
   --blue:#2F5F82; --green:#4D7556; --hill1:#B8D3B2; --hill2:#93B996; --hill3:#6E9C76; --sun:#F1D58C;
+  --glow1:rgba(241,213,140,.35); --glow2:rgba(241,213,140,.16); --cloud:#fff; --stars:0;
   --f:Rubik,system-ui,sans-serif;
 }
+/* night: the sun becomes the moon */
+html.night{
+  --sky:#0E1A28; --sky2:#1A2A3A; --ground:#17231C; --card:#202D26;
+  --ink:#E6EDEF; --ink2:#B3C1C7; --ink3:#83939A; --rule:#34453A;
+  --blue:#93BCDB; --green:#9DC6A4; --hill1:#2E4636; --hill2:#243A2B; --hill3:#5E8A66; --sun:#DCE4EC;
+  --glow1:rgba(206,220,235,.18); --glow2:rgba(206,220,235,.07); --cloud:#3B4B5E; --stars:1;
+}
+html,body,main,.card,.lang,.hills path{transition:background-color .6s,color .6s,fill .6s}
 *{box-sizing:border-box}
 html{background:var(--ground);color:var(--ink);-webkit-text-size-adjust:100%}
 body{margin:0;font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -44,6 +53,8 @@ html[lang=en] [data-l=en],html[lang=he] [data-l=he]{display:revert}
 
 /* sky */
 .sky{position:relative;background:linear-gradient(var(--sky),var(--sky2) 80%);overflow:hidden;padding-bottom:120px}
+.sky::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--stars);transition:opacity .8s;
+  background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 27% 42%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 44% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 58% 34%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 71% 8%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 86% 26%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 93% 48%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 6% 52%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 36% 60%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 64% 56%,#fff 50%,transparent 51%)}
 .top{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
 .me{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--ink);text-decoration:none}
 .me img{width:34px;height:34px;border-radius:50%;background:var(--blue);object-fit:cover}
@@ -57,9 +68,12 @@ nav a:hover{color:var(--ink)}
 .hero p{font-size:clamp(17px,1.9vw,20px);color:var(--ink2);max-width:34em;margin:0}
 .sunbox{display:grid;place-items:center}
 .sun{width:clamp(130px,20vw,210px);height:auto;aspect-ratio:1;border-radius:50%;background:var(--sun);object-fit:cover;
-  box-shadow:0 0 0 16px rgba(241,213,140,.35),0 0 0 36px rgba(241,213,140,.16);animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both .1s}
+  box-shadow:0 0 0 16px var(--glow1),0 0 0 36px var(--glow2);transition:background-color .6s,box-shadow .6s,filter .6s;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both .1s}
+html.night .sun{filter:grayscale(.6) brightness(.9)}
+.sunbtn{background:none;border:0;padding:0;border-radius:50%;cursor:pointer;display:block}
+.sunbtn:hover .sun{box-shadow:0 0 0 20px var(--glow1),0 0 0 44px var(--glow2)}
 @keyframes rise{from{transform:translateY(140px);opacity:0}}
-.cloud{position:absolute;z-index:1;fill:#fff;opacity:.9;cursor:pointer;animation:drift linear infinite;transition:opacity .4s,transform .4s}
+.cloud{position:absolute;z-index:1;fill:var(--cloud);transition:fill .6s;opacity:.9;cursor:pointer;animation:drift linear infinite;transition:opacity .4s,transform .4s}
 .cloud svg{display:block;width:100%;height:auto}
 .c1{top:96px;width:150px;animation-duration:80s;animation-delay:-20s}
 .c2{top:230px;width:96px;animation-duration:110s;animation-delay:-70s;opacity:.75}
@@ -113,7 +127,7 @@ footer .end{display:flex;align-items:center;gap:18px}
   .sky{padding-bottom:90px}
   .hero{grid-template-columns:1fr;gap:28px;padding:28px 0 20px}
   .sunbox{order:-1;justify-items:start}
-  .sun{width:110px;box-shadow:0 0 0 10px rgba(241,213,140,.35),0 0 0 22px rgba(241,213,140,.16)}
+  .sun{width:110px;box-shadow:0 0 0 10px var(--glow1),0 0 0 22px var(--glow2)}
   .hills{height:90px}
   .c1{top:70px;width:110px}.c2{top:180px}
   section{padding:52px 0}
@@ -144,7 +158,7 @@ footer .end{display:flex;align-items:center;gap:18px}
       <p data-l="en">Also known as <strong>Ilanox</strong>. I'm an electronics engineer working in RF and electromagnetic compatibility (EMC). I'm also a storyteller: I founded Edvin Studios, and I produce Twenty One Pilots tribute shows and fan events in Israel.</p>
       <p data-l="he">מוכר גם בתור <strong class="ltr">Ilanox</strong>. אני הנדסאי אלקטרוניקה ועוסק ב־RF ובתאימות אלקטרומגנטית (EMC). אני גם מספר סיפורים: הקמתי את Edvin Studios, ואני מפיק הופעות טריביוט ואירועי מעריצים של טוונטי וואן פיילוטס בישראל.</p>
     </div>
-    <div class="sunbox"><img class="sun" src="https://gravatar.com/avatar/33474f884d2026d684a7075970bd6f6264a6c5bd1fa098f1b5466cfbea188ca3?s=420&d=initials&name=Ilan+Levy" alt="" width="210" height="210"></div>
+    <div class="sunbox"><button class="sunbtn" type="button" data-theme aria-label="Day or night"><img class="sun" src="https://gravatar.com/avatar/33474f884d2026d684a7075970bd6f6264a6c5bd1fa098f1b5466cfbea188ca3?s=420&d=initials&name=Ilan+Levy" alt="" width="210" height="210"></button></div>
   </div>
   <svg class="hills" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
     <path fill="var(--hill1)" d="M0 70C180 20 330 30 480 60s300 50 470 10 340-50 490-20V150H0z"/>
@@ -230,6 +244,16 @@ footer .end{display:flex;align-items:center;gap:18px}
   var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
   set(saved || (/^(he|iw)/i.test(navigator.language || '') ? 'he' : 'en'));
   document.querySelectorAll('[data-switch]').forEach(function (b) { b.onclick = function () { set(h.lang === 'he' ? 'en' : 'he'); }; });
+  // day and night: tap the sun
+  var TK = 'ilanox.theme', meta = document.querySelector('meta[name=theme-color]');
+  function theme(n) {
+    h.classList.toggle('night', n);
+    if (meta) meta.content = n ? '#0E1A28' : '#CFE2EE';
+    try { localStorage.setItem(TK, n ? 'night' : 'day'); } catch (e) {}
+  }
+  var st = null; try { st = localStorage.getItem(TK); } catch (e) {}
+  theme(st ? st === 'night' : matchMedia('(prefers-color-scheme: dark)').matches);
+  document.querySelector('[data-theme]').onclick = function () { theme(!h.classList.contains('night')); };
   // poke a cloud
   document.querySelectorAll('.cloud').forEach(function (c) {
     c.addEventListener('click', function () {
