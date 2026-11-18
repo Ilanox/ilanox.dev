@@ -71,11 +71,22 @@ nav a:hover{color:var(--ink)}
 .sunbtn.down .sun{animation:sink .55s cubic-bezier(.5,0,.8,.4) forwards}
 .sunbtn.up .sun{animation:rise 1.1s cubic-bezier(.2,.8,.2,1) both}
 @keyframes sink{to{transform:translateY(420px)}}
-.sun{width:clamp(130px,20vw,210px);height:auto;aspect-ratio:1;border-radius:50%;background:var(--sun);object-fit:cover;
-  box-shadow:0 0 0 16px var(--glow1),0 0 0 36px var(--glow2);transition:background-color .6s,box-shadow .6s,filter .6s;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both .1s}
-html.night .sun{filter:grayscale(.6) brightness(.9)}
+.sun{width:clamp(130px,20vw,210px);height:auto;aspect-ratio:1;border-radius:50%;
+  transition:background-color .6s,box-shadow .6s,filter .6s;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both .1s}
+/* drawn sun and moon, labelled with what a tap does */
+.sun{display:grid;place-items:center;
+  background:radial-gradient(circle at 34% 30%,#FFF4CF 0,#F6DE97 32%,#EDC46E 72%,#D9A651 100%);
+  box-shadow:inset -14px -18px 30px rgba(166,110,30,.28),inset 10px 12px 24px rgba(255,255,255,.45),0 0 0 16px var(--glow1),0 0 0 36px var(--glow2)}
+html.night .sun{
+  background:radial-gradient(circle at 30% 62%,rgba(120,136,152,.35) 0 9%,transparent 10%),radial-gradient(circle at 66% 30%,rgba(120,136,152,.3) 0 6%,transparent 7%),radial-gradient(circle at 70% 70%,rgba(120,136,152,.25) 0 5%,transparent 6%),radial-gradient(circle at 36% 30%,#F7F9FB 0,#DCE3EA 40%,#B9C5D0 80%,#9DABB8 100%);
+  box-shadow:inset -16px -18px 30px rgba(40,56,74,.35),inset 10px 12px 22px rgba(255,255,255,.4),0 0 0 16px var(--glow1),0 0 0 36px var(--glow2)}
+.sun-t{font-weight:700;font-size:clamp(14px,1.6vw,19px);letter-spacing:.01em;color:#8A5D16;text-shadow:0 1px 0 rgba(255,246,214,.7);transition:color .6s}
+html.night .sun-t{color:#3E4E5E;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.sun-t .n,html.night .sun-t .d{display:none}
+html.night .sun-t .n{display:inline}
 .sunbtn{background:none;border:0;padding:0;border-radius:50%;cursor:pointer;display:block}
-.sunbtn:hover .sun{box-shadow:0 0 0 20px var(--glow1),0 0 0 44px var(--glow2)}
+.sunbtn:hover .sun{transform:scale(1.04)}
+.sun{transition:transform .25s,background .6s}
 @keyframes rise{from{transform:translateY(420px)}}
 .cloud{position:absolute;z-index:1;fill:var(--cloud);transition:fill .6s;opacity:.9;cursor:pointer;animation:drift linear infinite;transition:opacity .4s,transform .4s}
 .cloud svg{display:block;width:100%;height:auto}
@@ -141,7 +152,8 @@ footer .end{display:flex;align-items:center;gap:18px}
   .sky{padding-bottom:90px}
   .hero{grid-template-columns:1fr;gap:28px;padding:28px 0 20px}
   .sunbox{order:-1;justify-items:start}
-  .sun{width:110px;box-shadow:0 0 0 10px var(--glow1),0 0 0 22px var(--glow2)}
+  .sun{width:116px}
+  .sun-t{font-size:13px}
   .hills{height:90px}
   .c1{top:70px;width:110px}.c2{top:180px}
   section{padding:52px 0}
@@ -173,7 +185,7 @@ footer .end{display:flex;align-items:center;gap:18px}
       <p data-l="en">Also known as <strong>Ilanox</strong>. I'm an electronics engineer working in RF and electromagnetic compatibility (EMC). I'm also a storyteller: I founded Edvin Studios, and I produce Twenty One Pilots tribute shows and fan events in Israel.</p>
       <p data-l="he">מוכר גם בתור <strong class="ltr">Ilanox</strong>. אני הנדסאי אלקטרוניקה ועוסק ב־RF ובתאימות אלקטרומגנטית (EMC). אני גם מספר סיפורים: הקמתי את Edvin Studios, ואני מפיק הופעות טריביוט ואירועי מעריצים של טוונטי וואן פיילוטס בישראל.</p>
     </div>
-    <div class="sunbox"><button class="sunbtn" type="button" data-theme aria-label="Day or night"><img class="sun" src="https://gravatar.com/avatar/33474f884d2026d684a7075970bd6f6264a6c5bd1fa098f1b5466cfbea188ca3?s=420&d=initials&name=Ilan+Levy" alt="" width="210" height="210"></button></div>
+    <div class="sunbox"><button class="sunbtn" type="button" data-theme aria-label="Dark mode / light mode"><span class="sun"><span class="sun-t"><span class="d"><span data-l="en">Dark Mode</span><span data-l="he">מצב כהה</span></span><span class="n"><span data-l="en">Light Mode</span><span data-l="he">מצב בהיר</span></span></span></span></button></div>
   </div>
   <svg class="hills" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true">
     <path fill="var(--hill1)" d="M0 70C180 20 330 30 480 60s300 50 470 10 340-50 490-20V150H0z"/>
