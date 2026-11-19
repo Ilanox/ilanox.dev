@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-R3QGX9dw2t+7G83MY8seITbd3JX6gjbXzo0nq2QZ/NA='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://gravatar.com https://*.gravatar.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ilan Levy (Ilanox)</title>
 <meta name="description" content="Ilan Levy (Ilanox): electronics practical engineer working in RF and EMC, founder of Edvin Studios and owner of the Israeli Clique.">
@@ -13,8 +15,8 @@
 <meta property="og:url" content="https://ilanox.dev/">
 <meta property="og:title" content="Ilan Levy (Ilanox)">
 <meta property="og:description" content="Electronics engineer in RF and EMC. Founder of Edvin Studios, owner of the Israeli Clique.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/rubik.woff" as="font" type="font/woff" crossorigin>
+<style>@font-face{font-family:Rubik;src:url(/rubik.woff) format('woff');font-weight:300 900;font-display:swap}</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Ilan Levy","alternateName":"Ilanox","url":"https://ilanox.dev/","email":"mailto:ilan@edvin.co.il",
  "jobTitle":["Electronics engineer, RF and EMC","Founder and owner, Edvin Studios"],
